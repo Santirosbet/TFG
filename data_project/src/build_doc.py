@@ -1,6 +1,9 @@
+from pathlib import Path
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+_HERE = Path(__file__).resolve().parent.parent  # raíz del proyecto
 
 doc = Document()
 doc.styles['Normal'].font.name = 'Arial'
@@ -158,6 +161,7 @@ p2.add_run(
     'evidence for the 26-week forecasting window."'
 ).italic = True
 
-out = r'C:\Users\santi\OneDrive\Desktop\TFG\data_project\output\TFG_Data_Strategy.docx'
-doc.save(out)
+out = _HERE / "output" / "TFG_Data_Strategy.docx"
+out.parent.mkdir(parents=True, exist_ok=True)
+doc.save(str(out))
 print('Saved:', out)

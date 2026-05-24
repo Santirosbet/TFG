@@ -1,37 +1,115 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-.venv/
-venv/
-env/
+# === SECRETOS Y CREDENCIALES ===
+.env
+.env.*
+*.env
+secrets.json
+secrets.yaml
+config/secrets/
+credentials/
+*_credentials.json
+*_key.json
+api_keys.txt
+token.json
+notion_token.txt
+.notion_token
+*.pem
+*.key
+*.p12
+*.pfx
 
-# Large raw data files (download via src/01_download_data.py)
+# === DATOS SENSIBLES / NO SUBIR ===
 data/raw/
-data/processed/who_flunet_global.csv
+data/processed/
+data/external/
+*.csv
+*.xlsx
+*.parquet
+*.feather
+*.pkl
+*.pickle
 
-# Generated outputs (regenerate via run_pipeline.py)
-output/*.csv
+# === OUTPUTS GENERADOS (regenerar con run_pipeline.py) ===
+output/*.docx
+output/*.pdf
 output/*.json
 output/*.png
-output/*.docx
+output/*.csv
 
-# Keep sample data and model artefact
-!output/xgboost_best_model.json
-!data/processed/sample_integrated_dataset.csv
+# Archivos de output en raíz (legado — mover a output/)
+*.png
+*.docx
+model_meta.json
+prophet_meta.json
+switching_meta.json
+ensemble_meta.json
+sarima_meta.json
+wfv_meta.json
+sh_meta.json
+r06_meta.json
+inventory_meta.json
+ci_calibration.json
+dm_test_results.json
+conformal_meta.json
+ensemble_predictions.csv
+prophet_predictions.csv
+sarima_predictions.csv
+wfv_predictions.csv
+wfv_fold_results.csv
+wfv_summary.csv
+sh_ccf_results.csv
+sh_model_comparison.csv
+r06_predictions.csv
+switching_rule_results.csv
+test_predictions.csv
+model_comparison.csv
+model_comparison_v2.csv
+model_comparison_v3.csv
+shap_values.csv
+inventory_simulation.csv
+inventory_summary.csv
+xgboost_best_model.json
 
-# OS
-.DS_Store
-Thumbs.db
+# === MODELOS ENTRENADOS ===
+models/
+*.joblib
+*.h5
+*.pt
+*.pth
+*.onnx
 
-# IDE
-.vscode/
-.idea/
-*.code-workspace
+# === ENTORNO PYTHON ===
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
 
-# Jupyter
+# === JUPYTER ===
 .ipynb_checkpoints/
 *.ipynb
 
-# Streamlit
+# === IDEs ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# === LOGS ===
+*.log
+logs/
+
+# === STREAMLIT ===
 .streamlit/secrets.toml
+
+# === EXCEPCIÓN: mantener datos de muestra ===
+!data/processed/sample_integrated_dataset.csv
+!output/sample_*.csv
