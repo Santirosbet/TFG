@@ -5262,20 +5262,22 @@ if page == "🔴 Australia Ahora":
         horizontal_spacing=0.08,
     )
 
-    # LEFT PANEL: AU data
+    # LEFT PANEL: AU data  — legend="legend" (left panel legend)
     # Historical band
     fig.add_trace(go.Scatter(
         x=list(au_recent["iso_date"]) + list(au_recent["iso_date"])[::-1],
         y=list(au_recent["hi"]) + list(au_recent["lo"])[::-1],
         fill="toself", fillcolor="rgba(52,152,219,0.12)",
         line=dict(color="rgba(0,0,0,0)"),
-        name="IQR histórico 2010-2019", showlegend=True, legendgroup="au"
+        name="IQR histórico 2010-2019", showlegend=True,
+        legendgroup="au", legend="legend"
     ), row=1, col=1)
 
     fig.add_trace(go.Scatter(
         x=au_recent["iso_date"], y=au_recent["mid"],
         mode="lines", line=dict(color="rgba(52,152,219,0.4)", dash="dot", width=1.5),
-        name="Mediana histórica", showlegend=True, legendgroup="au"
+        name="Mediana histórica", showlegend=True,
+        legendgroup="au", legend="legend"
     ), row=1, col=1)
 
     fig.add_trace(go.Scatter(
@@ -5283,7 +5285,8 @@ if page == "🔴 Australia Ahora":
         mode="lines+markers",
         line=dict(color="#3498db", width=2.5),
         marker=dict(size=4, color="#3498db"),
-        name="AU FluNet 2025-26", showlegend=True, legendgroup="au",
+        name="AU FluNet 2025-26", showlegend=True,
+        legendgroup="au", legend="legend",
         hovertemplate="<b>%{x|%d %b %Y}</b><br>Gripe AU: %{y:.0f}<extra></extra>"
     ), row=1, col=1)
 
@@ -5311,19 +5314,21 @@ if page == "🔴 Australia Ahora":
             row=1, col=1
         )
 
-    # RIGHT PANEL: EU projection
+    # RIGHT PANEL: EU projection  — legend="legend2" (right panel legend)
     fig.add_trace(go.Scatter(
         x=list(proj_eu["proj_date"]) + list(proj_eu["proj_date"])[::-1],
         y=list(proj_eu["hi_s"]) + list(proj_eu["lo_s"])[::-1],
         fill="toself", fillcolor=_rgba(color, 0.16),
         line=dict(color="rgba(0,0,0,0)"),
-        name=f"{'Rango proyectado EU' if lang=='ES' else 'Projected EU range'}", showlegend=True, legendgroup="eu"
+        name=f"{'Rango proyectado EU' if lang=='ES' else 'Projected EU range'}",
+        showlegend=True, legendgroup="eu", legend="legend2"
     ), row=1, col=2)
 
     fig.add_trace(go.Scatter(
         x=proj_eu["proj_date"], y=proj_eu["mid_s"],
         mode="lines", line=dict(color=color, width=2.5, dash="dash"),
-        name=f"{'Proyección central' if lang=='ES' else 'Central projection'}", showlegend=True, legendgroup="eu",
+        name=f"{'Proyección central' if lang=='ES' else 'Central projection'}",
+        showlegend=True, legendgroup="eu", legend="legend2",
         hovertemplate="<b>%{x|%d %b %Y}</b><br>EU proyectado: %{y:.0f}<extra></extra>"
     ), row=1, col=2)
 
@@ -5338,18 +5343,24 @@ if page == "🔴 Australia Ahora":
             row=1, col=2
         )
 
+    _leg_style = dict(
+        orientation="h",
+        font=dict(size=10, color="rgba(255,255,255,0.88)"),
+        bgcolor="rgba(13,27,42,0.7)",
+        bordercolor="rgba(255,255,255,0.12)", borderwidth=1,
+        itemsizing="constant",
+    )
     fig.update_layout(
         template="plotly_dark",
         paper_bgcolor="rgba(13,27,42,0.6)",
         plot_bgcolor="rgba(255,255,255,0.03)",
         font=dict(family="Inter, sans-serif", color="rgba(255,255,255,0.8)"),
-        legend=dict(
-            orientation="h", y=-0.15, x=0,
-            font=dict(size=11),
-            bgcolor="rgba(0,0,0,0)"
-        ),
-        height=420,
-        margin=dict(t=50, b=50, l=10, r=10),
+        # legend  → AU panel (left), anchored below col 1 (~x=0..0.52)
+        legend=dict(**_leg_style, y=-0.18, x=0.0, xanchor="left"),
+        # legend2 → EU panel (right), anchored below col 2 (~x=0.60..1.0)
+        legend2=dict(**_leg_style, y=-0.18, x=0.60, xanchor="left"),
+        height=440,
+        margin=dict(t=50, b=80, l=10, r=10),
     )
     for col_i in [1, 2]:
         fig.update_xaxes(
