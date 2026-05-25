@@ -5362,14 +5362,14 @@ if page == "🔴 Australia Ahora":
             title_text=f"{'Positivos/semana' if lang=='ES' else 'Positives/week'}"
         )
 
-    # Add connecting arrow annotation between panels
+    # Add connecting annotation between panels
     fig.add_annotation(
-        text=f"28 {'semanas' if lang=='ES' else 'weeks'}<br>r = 0.70",
+        text=f"<b>28 {'semanas' if lang=='ES' else 'weeks'}</b><br>r = 0.70",
         xref="paper", yref="paper", x=0.57, y=0.5,
         showarrow=False,
-        font=dict(color="#f1c40f", size=13, family="Inter"),
-        bgcolor="rgba(241,196,15,0.12)",
-        bordercolor="#f1c40f", borderwidth=1, borderpad=6
+        font=dict(color="rgba(255,255,255,0.92)", size=12, family="Inter"),
+        bgcolor="rgba(46,117,182,0.30)",
+        bordercolor="rgba(46,117,182,0.65)", borderwidth=1, borderpad=8
     )
 
     st.plotly_chart(fig, use_container_width=True)
