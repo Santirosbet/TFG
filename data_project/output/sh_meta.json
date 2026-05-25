@@ -1,0 +1,55 @@
+{
+  "countries": [
+    "Australia",
+    "New Zealand",
+    "South Africa",
+    "Chile",
+    "Argentina",
+    "Brazil",
+    "Uruguay"
+  ],
+  "peak_r": {
+    "Australia": 0.7326,
+    "New Zealand": 0.2635,
+    "South Africa": 0.3719,
+    "Chile": 0.6238,
+    "Argentina": 0.4939,
+    "Brazil": 0.5225,
+    "Uruguay": 0.3678
+  },
+  "optimal_lag": {
+    "Australia": 28,
+    "New Zealand": 27,
+    "South Africa": 33,
+    "Chile": 35,
+    "Argentina": 32,
+    "Brazil": 36,
+    "Uruguay": 30
+  },
+  "tropical": {
+    "Australia": false,
+    "New Zealand": false,
+    "South Africa": false,
+    "Chile": false,
+    "Argentina": false,
+    "Brazil": true,
+    "Uruguay": false
+  },
+  "mape": {
+    "Australia": 50.58,
+    "New Zealand": 41.399,
+    "South Africa": 47.232,
+    "Chile": 45.828,
+    "Argentina": 42.583,
+    "Brazil": 47.835,
+    "Uruguay": 44.465
+  },
+  "baseline_lags_only_mape": 46.45,
+  "best_country": "New Zealand",
+  "best_mape": 41.399,
+  "combo_mape": 54.979,
+  "combo_countries": [
+    "Australia",
+    "New Zealand"
+  ]
+}

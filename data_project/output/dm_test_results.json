@@ -1,0 +1,18 @@
+{
+  "xgboost_vs_sarima_r03": {
+    "dm_stat": 6.2295,
+    "p_value": 0.0,
+    "winner": "XGBoost",
+    "significance": "***",
+    "n_obs": 60,
+    "interpretation": "XGBoost significantly outperforms SARIMA (p=0.0000) on R03 test set. The performance advantage is not due to sampling variability."
+  },
+  "model_b_vs_model_a_wfv": {
+    "dm_stat": 2.2486,
+    "p_value": 0.025681,
+    "winner": "Model B (FluNet)",
+    "significance": "*",
+    "n_obs": 192,
+    "h": 4
+  }
+}

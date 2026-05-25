@@ -1,0 +1,12 @@
+{
+  "coverage_80_overall": 0.7396,
+  "coverage_80_peak_season": 0.6667,
+  "coverage_80_off_season": 0.8611,
+  "coverage_50_overall": 0.5573,
+  "coverage_50_peak_season": 0.525,
+  "nominal_80": 0.8,
+  "nominal_50": 0.5,
+  "calibration_80": "good",
+  "calibration_50": "good",
+  "n_observations": 192
+}

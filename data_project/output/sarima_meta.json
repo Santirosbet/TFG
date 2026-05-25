@@ -1,0 +1,48 @@
+{
+  "order": [
+    0,
+    1,
+    1
+  ],
+  "seasonal_order": [
+    0,
+    0,
+    0,
+    52
+  ],
+  "aic": 2003.54,
+  "bic": 2010.46,
+  "log_likelihood": -999.77,
+  "train_weeks": 238,
+  "test_weeks": 60,
+  "metrics_sarima": {
+    "model": "SARIMA",
+    "MAE": 35.86,
+    "RMSE": 45.444,
+    "MAPE": 56.814,
+    "R2": -1.454
+  },
+  "metrics_xgboost": {
+    "model": "XGBoost (Model B)",
+    "MAE": 24.323,
+    "RMSE": 32.709,
+    "MAPE": 44.162,
+    "R2": -0.2713
+  },
+  "metrics_naive": {
+    "model": "Naive (mean)",
+    "MAE": 25.989,
+    "RMSE": 34.979,
+    "MAPE": 47.568,
+    "R2": -0.4538
+  },
+  "sarima_vs_xgb_mape_delta": 12.652,
+  "sarima_vs_naive_mape_delta": 9.246,
+  "ljung_box": {
+    "Q10_stat": 10.249,
+    "Q10_pval": 0.419,
+    "Q20_stat": 14.785,
+    "Q20_pval": 0.7886,
+    "residuals_white_noise": true
+  }
+}

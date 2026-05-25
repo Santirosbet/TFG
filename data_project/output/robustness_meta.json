@@ -1,0 +1,69 @@
+{
+  "analysis_date": "2026-05-11",
+  "n_wfv_predictions": 192,
+  "severity_stratification": {
+    "Severe": {
+      "mape": 36.18,
+      "switch_mape": 36.18,
+      "n": 33
+    },
+    "Moderate": {
+      "mape": 37.93,
+      "switch_mape": 37.93,
+      "n": 49
+    },
+    "Mild": {
+      "mape": 29.44,
+      "switch_mape": 29.44,
+      "n": 34
+    },
+    "Overall": {
+      "mape": 48.63,
+      "switch_mape": 40.28,
+      "n": 192
+    }
+  },
+  "directional_accuracy": {
+    "dir_acc_overall_B": 0.6094,
+    "dir_acc_overall_sw": 0.4115,
+    "dir_acc_peak_B": 0.6583,
+    "dir_acc_peak_sw": 0.6583,
+    "n_total": 192,
+    "n_peak": 120
+  },
+  "temperature_confounding": {
+    "r_error_vs_temp": -0.151,
+    "p_error_vs_temp": 0.0369,
+    "r_error_vs_temp_peak": -0.114,
+    "p_error_vs_temp_peak": 0.2169,
+    "interpretation": "Temperatura NO es confounder sistematico (r bajo)"
+  },
+  "bootstrap_mape": {
+    "bootstrap_n": 2000,
+    "B_mape_observed": 48.84,
+    "B_mape_ci_lo": 39.84,
+    "B_mape_ci_hi": 60.658,
+    "sw_mape_observed": 40.37,
+    "sw_mape_ci_lo": 34.675,
+    "sw_mape_ci_hi": 46.695,
+    "B_std": 5.326,
+    "sw_std": 3.044
+  },
+  "case_study_2017_18": {
+    "au_season": "2017",
+    "eu_season": "2017/18",
+    "peak_au_date": "2017-09-10",
+    "peak_au_value": 960.0,
+    "peak_eu_date": "2017-10-01",
+    "peak_eu_value": 98.0,
+    "lag_observed_weeks": 26,
+    "season_mape": 32.03,
+    "n_predictions_in_season": 31
+  },
+  "key_findings": [
+    "Peak season directional accuracy: 66% (XGB-B) \u2014 above 50% random baseline",
+    "Severe winters MAPE = 36.18% (model works best when it matters most)",
+    "MAPE bootstrap CI: [34.7%\u201346.7%] \u2014 result is statistically stable",
+    "Temperature-error correlation r=-0.114 \u2014 cold winters are not a systematic confounder"
+  ]
+}

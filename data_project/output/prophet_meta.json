@@ -1,0 +1,27 @@
+{
+  "prophet": {
+    "MAPE": 48.323,
+    "MAE": 22.423,
+    "RMSE": 29.577,
+    "R2": -0.0395
+  },
+  "xgboost_model_b": {
+    "MAPE": 44.162,
+    "MAE": 24.323
+  },
+  "sarima": {
+    "MAPE": 56.814,
+    "MAE": 35.86
+  },
+  "dm_xgboost_vs_prophet": {
+    "stat": -1.2186,
+    "pvalue": 0.227855,
+    "stars": "",
+    "verdict": "No significant difference"
+  },
+  "test_weeks": 60,
+  "regressors": [
+    "flu_au_lagged",
+    "flu_eu_positives"
+  ]
+}

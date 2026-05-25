@@ -1,0 +1,14 @@
+{
+  "features": [
+    "R03_lag1",
+    "R03_lag4_avg",
+    "flu_au_positives",
+    "flu_au_lagged",
+    "flu_eu_positives"
+  ],
+  "target": "R03",
+  "train_end": "2018-08-19",
+  "test_start": "2018-08-26",
+  "test_end": "2019-10-13",
+  "split_idx": 238
+}

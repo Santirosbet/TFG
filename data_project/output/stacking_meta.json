@@ -1,0 +1,24 @@
+{
+  "n_observations": 192,
+  "meta_train_folds": 20,
+  "meta_learner": "Ridge(alpha=1.0)",
+  "base_models": [
+    "XGBoost-B",
+    "LightGBM-B"
+  ],
+  "metrics": {
+    "xgb_mape": 50.330007731372916,
+    "lgbm_mape": 49.06185872043006,
+    "stacking_mape": 51.48963961319911,
+    "honest_note": "Stacking no mejora sobre XGBoost solo. Posible raz\u00f3n: los dos base models aprenden se\u00f1ales similares (alta correlaci\u00f3n de predicciones OOF), reduciendo el beneficio del ensemble. Resultado negativo documentado honestamente."
+  },
+  "dm_tests": {
+    "stacking_vs_xgb": {
+      "dm_stat": 0.8937,
+      "p_value": 0.3715,
+      "significant": false,
+      "better_model": "Stacking"
+    }
+  },
+  "switching_rule_reference_mape": 35.78
+}

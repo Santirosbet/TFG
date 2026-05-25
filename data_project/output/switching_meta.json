@@ -1,0 +1,11 @@
+{
+  "model_b_full_mape": 48.62550518946134,
+  "switched_full_mape": 35.779707199742376,
+  "model_b_season_mape": 34.823205549646715,
+  "switched_season_mape": 34.823205549646715,
+  "model_b_offseason_mape": 71.62933792248573,
+  "switched_offseason_mape": 37.37387661656847,
+  "off_season_weeks": 72,
+  "peak_season_weeks": 120,
+  "improvement_pp": 12.846
+}

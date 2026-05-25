@@ -1,0 +1,13 @@
+{
+  "min_train_weeks": 104,
+  "step_weeks": 4,
+  "test_window_weeks": 4,
+  "n_folds": 48,
+  "n_predictions": 192,
+  "A_MAPE_mean": 53.38,
+  "A_MAPE_std": 34.388,
+  "B_MAPE_mean": 48.626,
+  "B_MAPE_std": 35.617,
+  "B_wins_pct": 68.8,
+  "delta_mape_mean": 4.754
+}

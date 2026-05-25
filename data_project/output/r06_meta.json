@@ -1,0 +1,45 @@
+{
+  "target": "R06",
+  "features": [
+    "R03_lag1",
+    "R03_lag4_avg",
+    "flu_au_lagged",
+    "flu_eu_positives",
+    "R06_lag1",
+    "week_of_year"
+  ],
+  "train_weeks": 238,
+  "test_weeks": 60,
+  "metrics": {
+    "MAE": 6.222,
+    "RMSE": 8.078,
+    "MAPE": 52.067,
+    "R2": 0.5612
+  },
+  "feature_importance": {
+    "R06_lag1": 0.451200008392334,
+    "week_of_year": 0.23690000176429749,
+    "flu_eu_positives": 0.08749999850988388,
+    "R03_lag1": 0.07639999687671661,
+    "R03_lag4_avg": 0.07620000094175339,
+    "flu_au_lagged": 0.07190000265836716
+  },
+  "dm_tests": {
+    "xgboost_vs_sarima_r03": {
+      "dm_stat": 6.2295,
+      "p_value": 0.0,
+      "winner": "XGBoost",
+      "significance": "***",
+      "n_obs": 60,
+      "interpretation": "XGBoost significantly outperforms SARIMA (p=0.0000) on R03 test set. The performance advantage is not due to sampling variability."
+    },
+    "model_b_vs_model_a_wfv": {
+      "dm_stat": 2.2486,
+      "p_value": 0.025681,
+      "winner": "Model B (FluNet)",
+      "significance": "*",
+      "n_obs": 192,
+      "h": 4
+    }
+  }
+}

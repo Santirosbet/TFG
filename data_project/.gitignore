@@ -110,6 +110,30 @@ logs/
 # === STREAMLIT ===
 .streamlit/secrets.toml
 
-# === EXCEPCIÓN: mantener datos de muestra ===
-!data/processed/sample_integrated_dataset.csv
-!output/sample_*.csv
+# === EXCEPCIONES PARA STREAMLIT CLOUD DEPLOYMENT ===
+# Data procesada necesaria para el dashboard
+!data/processed/
+!data/processed/*.csv
+
+# Señales externas
+!data/external/
+!data/external/*.csv
+
+# Outputs del modelo (JSONs y CSVs — necesarios para el dashboard)
+!output/*.json
+!output/*.csv
+
+# PNGs de SHAP y robustez (cargados con st.image en el dashboard)
+!output/shap_beeswarm.png
+!output/shap_waterfall.png
+!output/shap_dependence_flu_lag.png
+!output/shap_dependence_r03_lag.png
+!output/robustness_severity.png
+!output/robustness_directional.png
+!output/robustness_temperature.png
+!output/robustness_bootstrap.png
+!output/robustness_case2018.png
+
+# Excluir docx/pdf siempre (demasiado grandes, no los necesita el dashboard)
+output/*.docx
+output/*.pdf

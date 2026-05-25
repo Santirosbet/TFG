@@ -1,0 +1,23 @@
+{
+  "target": "N02BE",
+  "description": "Paracetamol/Acetaminophen (N02BE) demand forecasting",
+  "lag_au_optimal": 20,
+  "n02be_mean": 208.63,
+  "n02be_std": 76.07,
+  "r03_mean": 38.6,
+  "wfv_folds": 43,
+  "A_MAPE_mean": 18.333,
+  "B_MAPE_mean": 18.551,
+  "B_delta_pp": 0.218,
+  "B_wins_pct": 53.5,
+  "switch_MAPE": 21.84,
+  "dm_stat": -0.816641006783977,
+  "dm_p_value": 0.415269839012612,
+  "dm_significant": false,
+  "dm_better": "B (AU flu)",
+  "comparison_r03": {
+    "R03_B_MAPE": 48.626,
+    "N02BE_B_MAPE": 18.551,
+    "interpretation": "Comparar para validar que la hipotesis se generaliza"
+  }
+}

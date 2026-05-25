@@ -1,0 +1,37 @@
+{
+  "n_folds": 48,
+  "min_train": 104,
+  "step": 4,
+  "test_window": 4,
+  "models": {
+    "LGB-A": {
+      "MAPE_mean": 49.613,
+      "MAPE_std": 39.27,
+      "MAE_mean": 16.413,
+      "R2_mean": -2.1885
+    },
+    "LGB-B": {
+      "MAPE_mean": 49.062,
+      "MAPE_std": 41.613,
+      "MAE_mean": 16.847,
+      "R2_mean": -2.2781
+    },
+    "LGB-C": {
+      "MAPE_mean": 48.686,
+      "MAPE_std": 37.491,
+      "MAE_mean": 16.496,
+      "R2_mean": -2.6199
+    }
+  },
+  "dm_tests": {
+    "lgbm_B_vs_xgb_B": {
+      "dm_stat": -0.5203,
+      "p_value": 0.6029,
+      "significant": false,
+      "better_model": "XGBoost-B",
+      "note": "stat>0 \u2192 LGB mejor; stat<0 \u2192 XGB mejor"
+    }
+  },
+  "xgboost_reference_mape": 44.16,
+  "lgbm_B_vs_xgb_B_mape_delta": -4.902
+}

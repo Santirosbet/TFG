@@ -1,0 +1,5 @@
+scenario,service_level,stockout_weeks,total_shortage,avg_stock,n_orders,holding_cost,shortage_cost,order_cost,total_cost
+Naive (sin forecast),71.67,17,606.3,44.5,58,1335.37,4850.33,1450.0,7635.71
+XGBoost forecast,71.67,17,606.3,40.4,52,1212.87,4850.33,1300.0,7363.21
+SARIMA forecast,70.0,18,637.3,40.5,52,1214.37,5098.33,1300.0,7612.71
+Prevision perfecta,71.67,17,606.3,41.4,53,1243.37,4850.33,1325.0,7418.71

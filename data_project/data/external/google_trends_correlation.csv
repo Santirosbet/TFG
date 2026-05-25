@@ -1,0 +1,13 @@
+feature,best_lag,r
+trends_resfriado_es,1,0.5089
+trends_inhalador_es,0,0.5048
+trends_paracetamol_eu,1,0.4762
+trends_cold_eu,4,0.459
+trends_paracetamol_es,1,0.4503
+trends_flu_eu,1,0.4294
+trends_tos_es,1,0.4132
+trends_gripe_es,1,0.3774
+trends_bronquitis_es,1,0.377
+trends_cough_eu,1,0.3177
+trends_bronchitis_eu,1,0.2542
+trends_inhaler_eu,1,0.1542

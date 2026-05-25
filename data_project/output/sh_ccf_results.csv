@@ -1,0 +1,8 @@
+country,tropical,peak_r,optimal_lag_w,p_value,data_weeks
+Australia,False,0.7326,28,0.0,1531
+New Zealand,False,0.2635,27,0.0,1522
+South Africa,False,0.3719,33,0.0,1527
+Chile,False,0.6238,35,0.0,1529
+Argentina,False,0.4939,32,0.0,1512
+Brazil,True,0.5225,36,0.0,1530
+Uruguay,False,0.3678,30,0.0,1487

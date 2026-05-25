@@ -1,0 +1,18 @@
+{
+  "q_80": 22.522,
+  "q_50": 14.062,
+  "coverage_80_conformal": 0.7143,
+  "coverage_50_conformal": 0.5195,
+  "width_80_conformal": 45.045,
+  "nominal_80": 0.8,
+  "nominal_50": 0.5,
+  "n_calibration": 115,
+  "n_test": 77,
+  "calib_fraction": 0.6,
+  "coverage_80_original": 0.7396,
+  "improvement_pp": -2.53,
+  "method": "split_conformal_prediction",
+  "nonconformity_score": "absolute_residual",
+  "target_coverage": 0.8,
+  "target_achieved": false
+}

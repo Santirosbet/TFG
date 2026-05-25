@@ -1,0 +1,49 @@
+{
+  "models": {
+    "Model B (Australia only)": {
+      "label": "Model B (Australia only)",
+      "MAPE": 52.518,
+      "MAE": 25.302,
+      "RMSE": 32.4,
+      "R2": -0.2474,
+      "n_features": 5,
+      "test_weeks": 60
+    },
+    "Ensemble AU+NZ": {
+      "label": "Ensemble AU+NZ",
+      "MAPE": 52.855,
+      "MAE": 25.028,
+      "RMSE": 31.774,
+      "R2": -0.1997,
+      "n_features": 6,
+      "test_weeks": 60
+    },
+    "Ensemble AU+CL": {
+      "label": "Ensemble AU+CL",
+      "MAPE": 56.731,
+      "MAE": 26.237,
+      "RMSE": 33.436,
+      "R2": -0.3285,
+      "n_features": 6,
+      "test_weeks": 60
+    },
+    "Ensemble AU+NZ+CL": {
+      "label": "Ensemble AU+NZ+CL",
+      "MAPE": 53.75,
+      "MAE": 25.688,
+      "RMSE": 33.278,
+      "R2": -0.3159,
+      "n_features": 7,
+      "test_weeks": 60
+    }
+  },
+  "best_label": "Model B (Australia only)",
+  "best_mape": 52.518,
+  "model_b_mape": 52.518,
+  "improvement_pp": 0.0,
+  "country_lags": {
+    "australia": 26,
+    "new_zealand": 27,
+    "chile": 35
+  }
+}

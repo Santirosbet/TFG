@@ -1,0 +1,71 @@
+{
+  "params": {
+    "initial_stock": 200,
+    "safety_stock": 50,
+    "target_stock": 220,
+    "reorder_point": 90,
+    "lead_time": 4,
+    "holding_cost": 0.5,
+    "shortage_cost": 8.0,
+    "order_cost": 25.0
+  },
+  "n_weeks": 60,
+  "test_start": "2018-08-26",
+  "test_end": "2019-10-13",
+  "scenarios": [
+    "Naive (sin forecast)",
+    "XGBoost forecast",
+    "SARIMA forecast",
+    "Prevision perfecta"
+  ],
+  "kpis": {
+    "Naive (sin forecast)": {
+      "stockout_weeks": 17,
+      "total_shortage": 606.3,
+      "service_level": 71.67,
+      "avg_stock": 44.5,
+      "n_orders": 58,
+      "holding_cost": 1335.37,
+      "shortage_cost": 4850.33,
+      "order_cost": 1450.0,
+      "total_cost": 7635.71,
+      "scenario": "Naive (sin forecast)"
+    },
+    "XGBoost forecast": {
+      "stockout_weeks": 17,
+      "total_shortage": 606.3,
+      "service_level": 71.67,
+      "avg_stock": 40.4,
+      "n_orders": 52,
+      "holding_cost": 1212.87,
+      "shortage_cost": 4850.33,
+      "order_cost": 1300.0,
+      "total_cost": 7363.21,
+      "scenario": "XGBoost forecast"
+    },
+    "SARIMA forecast": {
+      "stockout_weeks": 18,
+      "total_shortage": 637.3,
+      "service_level": 70.0,
+      "avg_stock": 40.5,
+      "n_orders": 52,
+      "holding_cost": 1214.37,
+      "shortage_cost": 5098.33,
+      "order_cost": 1300.0,
+      "total_cost": 7612.71,
+      "scenario": "SARIMA forecast"
+    },
+    "Prevision perfecta": {
+      "stockout_weeks": 17,
+      "total_shortage": 606.3,
+      "service_level": 71.67,
+      "avg_stock": 41.4,
+      "n_orders": 53,
+      "holding_cost": 1243.37,
+      "shortage_cost": 4850.33,
+      "order_cost": 1325.0,
+      "total_cost": 7418.71,
+      "scenario": "Prevision perfecta"
+    }
+  }
+}
