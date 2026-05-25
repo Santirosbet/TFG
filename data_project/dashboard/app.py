@@ -242,6 +242,40 @@ details summary { color: rgba(255,255,255,0.8) !important; }
     border: 1px solid rgba(255,255,255,0.15) !important;
     color: white !important; border-radius: 8px !important;
 }
+/* ── Selectbox dropdown popup (the list that opens) ── */
+[data-baseweb="popover"] > div,
+[data-baseweb="select"] [role="listbox"],
+ul[data-baseweb="menu"] {
+    background: #1a2f4a !important;
+    border: 1px solid rgba(46,117,182,0.4) !important;
+    border-radius: 8px !important;
+}
+[data-baseweb="select"] [role="option"],
+ul[data-baseweb="menu"] li {
+    background: #1a2f4a !important;
+    color: rgba(255,255,255,0.88) !important;
+}
+[data-baseweb="select"] [role="option"]:hover,
+ul[data-baseweb="menu"] li:hover {
+    background: rgba(46,117,182,0.35) !important;
+    color: white !important;
+}
+[data-baseweb="select"] [aria-selected="true"] {
+    background: rgba(46,117,182,0.5) !important;
+    color: white !important;
+}
+/* ── Secondary buttons (language toggle EN, download, etc.) ── */
+button[kind="secondary"] {
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    color: rgba(255,255,255,0.88) !important;
+    border-radius: 8px !important;
+}
+button[kind="secondary"]:hover {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.4) !important;
+    color: white !important;
+}
 .stSlider { filter: hue-rotate(200deg) brightness(1.2); }
 
 /* ── Horizontal divider ── */
@@ -305,10 +339,10 @@ def ts(timestamp):
 # --- Dark-themed table helper (replaces st.dataframe for full dark control) ---
 def show_table(df, height=None, striped=True):
     """Render a pandas DataFrame as a fully dark-styled HTML table."""
-    bg_main  = "rgba(13,27,42,0.0)"        # transparent → page bg shows
-    bg_head  = "rgba(46,117,182,0.35)"
-    bg_even  = "rgba(255,255,255,0.04)"
-    bg_odd   = "rgba(0,0,0,0)"
+    bg_main  = "#0d1b2a"                    # solid dark — no white bleed-through
+    bg_head  = "rgba(46,117,182,0.55)"
+    bg_even  = "#132030"
+    bg_odd   = "#0d1b2a"
     border   = "rgba(255,255,255,0.10)"
     txt_head = "rgba(255,255,255,0.95)"
     txt_body = "rgba(255,255,255,0.88)"
@@ -327,11 +361,11 @@ def show_table(df, height=None, striped=True):
         font-weight:600; white-space:nowrap;
     }}
     .tfg-tbl td {{
-        color:{txt_body}; padding:7px 12px;
+        color:{txt_body} !important; padding:7px 12px;
         border-bottom:1px solid {border};
     }}
-    .tfg-tbl tr:nth-child(even) td {{ background:{bg_even}; }}
-    .tfg-tbl tr:nth-child(odd)  td {{ background:{bg_odd}; }}
+    .tfg-tbl tr:nth-child(even) td {{ background:{bg_even} !important; }}
+    .tfg-tbl tr:nth-child(odd)  td {{ background:{bg_odd} !important; }}
     .tfg-tbl tr:hover td {{ background:rgba(46,117,182,0.12) !important; }}
     </style>
     """
