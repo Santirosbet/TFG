@@ -4,11 +4,14 @@ Build TFG versions for the 10,000-word limit requirement.
 Version 3 (Otilio's approach): Move excess sections to new appendices.
   - Main body ≈ 10,000 words
   - All content preserved in appendices B-I
-  - Output: TFG_Final_v6_otilio.docx
+  - Output: TFG_Final_v7_otilio.docx
 
 Version 1 (Condensed): Same trimmed main body, no extra appendices.
   - Main body ≈ 10,000 words, truly standalone
-  - Output: TFG_Final_v6_condensed.docx
+  - Output: TFG_Final_v7_condensed.docx
+
+v7 base: unpacked_v6 with table captions (Tabla 3-8) + in-text citations added.
+Line numbers updated to match modified document.xml (19,518 lines).
 
 Run: python src/build_thesis_versions.py
 """
@@ -19,7 +22,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 DOCX_BASE = r"C:\Users\santi\AppData\Roaming\Claude\local-agent-mode-sessions\skills-plugin\644fd433-e47e-45fc-a2e4-186ff94b9414\e53c41d9-1c86-4563-85dd-500dc1c93ca4\skills\docx"
 SCRIPTS   = os.path.join(DOCX_BASE, "scripts", "office")
 UNPACKED_SRC = os.path.join(DOCX_BASE, "unpacked_v6")
-ORIGINAL_DOCX = r"C:\Users\santi\OneDrive\Desktop\TFG\data_project\output\TFG_Final_v6.docx"
+ORIGINAL_DOCX = r"C:\Users\santi\OneDrive\Desktop\TFG\data_project\output\TFG_Final_v7.docx"
 OUT_DIR   = r"C:\Users\santi\OneDrive\Desktop\TFG\data_project\output"
 
 # ─── Section boundaries (1-indexed line numbers in unpacked document.xml) ────
@@ -38,7 +41,7 @@ MOVE_SECTIONS = [
     ),
     (
         "Section 6.11 — Southern Hemisphere Validation",
-        10867, 13174,
+        10900, 13218,
         "C",
         "Appendix C — Southern Hemisphere Multi-Country Validation (Section 6.11)",
         "Note: The full multi-country Southern Hemisphere cross-hemispheric validation "
@@ -51,7 +54,7 @@ MOVE_SECTIONS = [
     ),
     (
         "Section 6.13 — Ensemble and Switching Rule (detailed)",
-        13174, 14129,
+        13218, 14173,
         "D",
         "Appendix D — Advanced Experiments: Ensemble and Switching Rule (Section 6.13)",
         "Note: Full methodology and results for the multi-country SH ensemble and "
@@ -62,7 +65,7 @@ MOVE_SECTIONS = [
     ),
     (
         "Section 6.14 — Prophet Baseline",
-        14129, 14902,
+        14173, 14957,
         "E",
         "Appendix E — Prophet Baseline: Third Model Comparison (Section 6.14)",
         "Note: Complete Prophet baseline analysis (Section 6.14) is provided in "
@@ -72,7 +75,7 @@ MOVE_SECTIONS = [
     ),
     (
         "Section 6.19 — TFG v2 External Signal Experiments",
-        14902, 15222,
+        14957, 15277,
         "F",
         "Appendix F — TFG Version 2: External Signal Extensions (Section 6.19)",
         "Note: TFG Version 2 experiment results (Section 6.19) are provided in "
@@ -83,7 +86,7 @@ MOVE_SECTIONS = [
     ),
     (
         "Section 6.20 — TFG v3 Feature Engineering",
-        15222, 15372,
+        15277, 15427,
         "G",
         "Appendix G — TFG Version 3: Feature Engineering and Cross-Category (Section 6.20)",
         "Note: TFG Version 3 experiments (Section 6.20) are provided in Appendix G, "
@@ -93,7 +96,7 @@ MOVE_SECTIONS = [
     ),
     (
         "Section 6.21 — Robustness Analysis",
-        15372, 15541,
+        15427, 15596,
         "H",
         "Appendix H — Robustness Analysis: Indirect Evidence Under Anomalous Conditions (Section 6.21)",
         "Note: Full robustness analysis (Section 6.21) is provided in Appendix H, "
@@ -104,7 +107,7 @@ MOVE_SECTIONS = [
     ),
     (
         "Section 6.22 — Feature-Enriched Backtest",
-        15541, 16372,
+        15596, 16438,
         "I",
         "Appendix I — Feature-Enriched Model: Season-by-Season Backtest (Section 6.22)",
         "Note: Full season-by-season backtest validation for the feature-enriched "
@@ -221,7 +224,7 @@ def main():
         f.writelines(modified_lines)
     print(f"  Written {len(modified_lines)} lines to document.xml")
 
-    v1_out = os.path.join(OUT_DIR, "TFG_Final_v6_condensed.docx")
+    v1_out = os.path.join(OUT_DIR, "TFG_Final_v7_condensed.docx")
     pack_docx(v1_dir, v1_out, ORIGINAL_DOCX)
 
     # ── VERSION 3: Otilio — main body + new appendices ────────────────────────
@@ -264,7 +267,7 @@ def main():
         f.writelines(v3_lines)
     print(f"  Written {len(v3_lines)} lines to document.xml")
 
-    v3_out = os.path.join(OUT_DIR, "TFG_Final_v6_otilio.docx")
+    v3_out = os.path.join(OUT_DIR, "TFG_Final_v7_otilio.docx")
     pack_docx(v3_dir, v3_out, ORIGINAL_DOCX)
 
     # ── Summary ───────────────────────────────────────────────────────────────
