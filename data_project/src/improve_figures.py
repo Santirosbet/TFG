@@ -585,7 +585,7 @@ def fig_switching():
     off_patch = mpatches.Patch(color=SLATE, alpha=0.25, label="Off-season weeks (22–39)")
     handles, labels = ax1.get_legend_handles_labels()
     ax1.legend(handles + [off_patch], labels + ["Off-season (wks 22–39)"],
-               loc="upper left", framealpha=0.92, fontsize=11)
+               loc="upper left", framealpha=0.92, fontsize=13)
 
     # Panel 2 — MAPE grouped bar by season
     cats = ["Full period\n(192 wks)", "Peak season\n(wks 1–21, 40–52)", "Off-season\n(wks 22–39)"]

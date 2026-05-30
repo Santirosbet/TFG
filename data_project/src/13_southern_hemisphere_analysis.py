@@ -177,15 +177,16 @@ def build_xgb_with_signal(df_main, sh_series, lag, country_name, split_idx):
 
 
 def plot_ccf(ccf_dict, out_path):
-    """One CCF curve per country, all on same axes."""
-    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+    """One CCF curve per country — stacked 2-row layout for readability."""
+    fig, axes = plt.subplots(2, 1, figsize=(14, 14),
+                             gridspec_kw={"hspace": 0.52})
     fig.suptitle(
         "Cross-Hemispheric Lead-Lag Validation — Southern Hemisphere vs Europe\n"
         "WHO FluNet 1997-2024 | Pearson r at lag 0-52 weeks (SH leads EU)",
-        fontsize=13, fontweight="bold", color=BLUE, y=1.01
+        fontsize=14, fontweight="bold", color=BLUE, y=1.01
     )
 
-    # Left: all countries
+    # Top: CCF curves for all countries
     ax1 = axes[0]
     peak_records = []
     for i, (country, ccf_df) in enumerate(ccf_dict.items()):
@@ -196,7 +197,7 @@ def plot_ccf(ccf_dict, out_path):
                  label=country, linestyle="-" if not SH_COUNTRIES[country]["tropical"] else "--")
         peak_row = ccf_df.loc[ccf_df["r"].idxmax()]
         peak_records.append((country, peak_row["lag"], peak_row["r"], color))
-        ax1.scatter([peak_row["lag"]], [peak_row["r"]], s=60, color=color, zorder=5)
+        ax1.scatter([peak_row["lag"]], [peak_row["r"]], s=80, color=color, zorder=5)
 
     # 95% CI line (approximate: r > 2/sqrt(n))
     n_approx = 1000  # ~20 years weekly
@@ -205,55 +206,60 @@ def plot_ccf(ccf_dict, out_path):
                 label=f"95% CI (n≈{n_approx})")
     ax1.axhline(0, color="#e0e0e0", lw=0.8)
     ax1.axvline(26, color=ORANGE, linestyle=":", lw=1.2, alpha=0.6, label="26-week mark")
-    ax1.set_xlabel("Lag (weeks) — SH leads EU by N weeks", fontsize=10)
-    ax1.set_ylabel("Pearson r", fontsize=10)
-    ax1.set_title("CCF: Southern Hemisphere → European flu", fontsize=11, color=BLUE)
-    ax1.legend(fontsize=8, ncol=2)
+    ax1.set_xlabel("Lag (weeks) — SH leads EU by N weeks", fontsize=12)
+    ax1.set_ylabel("Pearson r", fontsize=12)
+    ax1.set_title("Panel A — CCF: Southern Hemisphere → European flu\n"
+                  "(all 7 countries; dashed = tropical; markers = peak correlation)",
+                  fontsize=13, color=BLUE)
+    ax1.legend(fontsize=11, ncol=2, loc="upper right", framealpha=0.9)
     ax1.set_xlim(0, 52)
     ax1.spines[["top", "right"]].set_visible(False)
     ax1.grid(alpha=0.2, linestyle="--")
+    ax1.tick_params(labelsize=12)
 
-    # Right: peak r and optimal lag bar chart
+    # Bottom: peak r and optimal lag bar chart
     ax2 = axes[1]
     countries = [p[0] for p in peak_records]
     peak_rs   = [p[2] for p in peak_records]
     peak_lags = [p[1] for p in peak_records]
     colors_   = [p[3] for p in peak_records]
     x = np.arange(len(countries))
-    bars = ax2.bar(x, peak_rs, color=colors_, edgecolor="white", alpha=0.85)
-    ax2.bar_label(bars, fmt="%.3f", padding=3, fontsize=9)
+    bars = ax2.bar(x, peak_rs, color=colors_, edgecolor="white", alpha=0.85, width=0.55)
+    ax2.bar_label(bars, fmt="%.3f", padding=3, fontsize=12)
     # Annotate optimal lag
     for xi, (lag_v, r_v) in enumerate(zip(peak_lags, peak_rs)):
         ax2.text(xi, r_v * 0.5, f"lag={lag_v}w", ha="center", va="center",
-                 fontsize=8, color="white", fontweight="bold")
+                 fontsize=11, color="white", fontweight="bold")
     ax2.set_xticks(x)
-    ax2.set_xticklabels([c.replace(" ", "\n") for c in countries], fontsize=9)
+    ax2.set_xticklabels(countries, fontsize=12)
     ax2.axhline(ci_line, color="#bbb", linestyle=":", lw=1.2)
-    ax2.set_ylabel("Peak Pearson r", fontsize=10)
-    ax2.set_title("Peak cross-correlation per country\n(lag annotated inside bar)",
-                  fontsize=11, color=BLUE)
+    ax2.set_ylabel("Peak Pearson r", fontsize=12)
+    ax2.set_title("Panel B — Peak cross-correlation per country\n"
+                  "(lag in weeks annotated inside each bar)",
+                  fontsize=13, color=BLUE)
     ax2.spines[["top", "right"]].set_visible(False)
     ax2.grid(axis="y", alpha=0.25, linestyle="--")
+    ax2.tick_params(labelsize=12)
 
     plt.tight_layout()
-    fig.savefig(out_path, dpi=180, bbox_inches="tight")
+    fig.savefig(out_path, dpi=200, bbox_inches="tight")
     plt.close(fig)
     print(f"[OK] Saved CCF plot: {out_path}")
 
 
 def plot_model_comparison(model_results_df, australia_mape, out_path):
-    fig, ax = plt.subplots(figsize=(12, 5))
+    fig, ax = plt.subplots(figsize=(14, 7))
     fig.suptitle(
         "XGBoost MAPE Using Each Southern Hemisphere Country Signal\n"
         "(lags + country-specific flu lag vs European R03 demand)",
-        fontsize=12, fontweight="bold", color=BLUE
+        fontsize=14, fontweight="bold", color=BLUE
     )
 
     df = model_results_df.sort_values("MAPE")
     colors_ = [COLORS[i % len(COLORS)] for i in range(len(df))]
     bars = ax.barh(df["country"] + f"\n(lag={df['lag'].astype(int).astype(str)}w  r={df['peak_r'].round(3).astype(str)})",
                    df["MAPE"], color=colors_, edgecolor="white", height=0.6)
-    ax.bar_label(bars, fmt="%.2f%%", padding=4, fontsize=9)
+    ax.bar_label(bars, fmt="%.2f%%", padding=4, fontsize=11)
 
     # Baseline: lags only (no SH signal)
     ax.axvline(46.45, color="#aaa", linestyle=":", lw=1.5,
@@ -261,13 +267,14 @@ def plot_model_comparison(model_results_df, australia_mape, out_path):
     ax.axvline(australia_mape, color=COLORS[0], linestyle="--", lw=1.8,
                label=f"Australia only: {australia_mape:.2f}%")
 
-    ax.set_xlabel("MAPE (%) — test set", fontsize=10)
-    ax.legend(fontsize=9)
+    ax.set_xlabel("MAPE (%) — test set", fontsize=12)
+    ax.legend(fontsize=11)
     ax.set_xlim(0, df["MAPE"].max() * 1.25)
     ax.spines[["top", "right"]].set_visible(False)
     ax.grid(axis="x", alpha=0.25, linestyle="--")
+    ax.tick_params(labelsize=11)
     plt.tight_layout()
-    fig.savefig(out_path, dpi=180, bbox_inches="tight")
+    fig.savefig(out_path, dpi=200, bbox_inches="tight")
     plt.close(fig)
     print(f"[OK] Saved model comparison plot: {out_path}")
 
